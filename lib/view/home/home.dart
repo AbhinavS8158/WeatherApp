@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:weather_app/controller/weather_controller.dart';
+import 'package:weather_app/view/home/widget/main_weather.dart';
 import 'package:weather_app/view/home/widget/top_bar.dart';
 
 class WeatherHomeScreen extends StatelessWidget {
@@ -40,7 +41,7 @@ class WeatherHomeScreen extends StatelessWidget {
                     child: Column(
                       children: [
 
-                        // buildMainWeather(),
+                        buildMainWeather(),
                         // buildWeatherDetails(),
                         // buildDailyForecast(),
                         // buildHistoryWeather(),
