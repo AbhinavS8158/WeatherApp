@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:weather_app/controller/weather_controller.dart';
+import 'package:weather_app/view/home/widget/daily_forcast.dart';
+import 'package:weather_app/view/home/widget/details_weather.dart';
 import 'package:weather_app/view/home/widget/main_weather.dart';
 import 'package:weather_app/view/home/widget/top_bar.dart';
 
@@ -42,8 +44,8 @@ class WeatherHomeScreen extends StatelessWidget {
                       children: [
 
                         buildMainWeather(),
-                        // buildWeatherDetails(),
-                        // buildDailyForecast(),
+                        buildWeatherDetails(),
+                        buildDailyForecast(),
                         // buildHistoryWeather(),
                         const SizedBox(height: 20),
                       ],
