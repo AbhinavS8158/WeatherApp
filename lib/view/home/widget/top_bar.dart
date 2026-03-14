@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:weather_app/controller/weather_controller.dart';
+import 'package:weather_app/view/map_screen/map_screen.dart';
 
 Widget buildTopBar() {
 
@@ -50,6 +51,10 @@ Widget buildTopBar() {
             ),
           ],
         ),
+        Spacer(),
+        IconButton(onPressed: (){
+          Get.to(()=>WeatherMapScreen());
+        }, icon:Icon(Icons.map_rounded,color: Colors.white38,))
       ],
     ),
   );

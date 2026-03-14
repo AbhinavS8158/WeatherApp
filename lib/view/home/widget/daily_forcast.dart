@@ -5,6 +5,7 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:lottie/lottie.dart';
 import 'package:weather_app/controller/weather_controller.dart';
 import 'package:weather_app/model/weather_model.dart';
 import 'package:weather_app/view/home/widget/selectionTitle.dart';
@@ -16,14 +17,18 @@ Widget buildDailyForecast() {
     final List<DailyWeather> daily = controller.dailyForecast;
 
     if (daily.isEmpty) {
-      return const Padding(
-        padding: EdgeInsets.all(20),
-        child: Center(
-          child: CircularProgressIndicator(),
-        ),
-      );
-    }
-
+     return Padding(
+  padding: const EdgeInsets.all(20),
+  child: Center(
+    child: Lottie.asset(
+  'assets/animation/loading.json',
+  width: 120,
+  height: 120,
+  repeat: true,
+)
+  ),
+);
+ }
     return Padding(
       padding: const EdgeInsets.fromLTRB(20, 20, 20, 0),
       child: Column(
