@@ -26,7 +26,7 @@ class WeatherMapScreen extends StatelessWidget {
               controller.latitude.value,
               controller.longitude.value,
             ),
-            zoom: 10,
+            zoom: 5,
           ),
           tileOverlays: controller.overlays.value,
         ),
