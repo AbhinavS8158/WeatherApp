@@ -6,9 +6,13 @@
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
 
     <application
-        android:label="weather_app"
+        android:label="WeatherApp"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
+         <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyBO3HTnA-q-ZHe-oYjPUxGtUODQjV3aCZ8"/>
+
         <activity
             android:name=".MainActivity"
             android:exported="true"

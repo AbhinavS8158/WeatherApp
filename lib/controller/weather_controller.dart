@@ -2,13 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:geocoding/geocoding.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:get/get.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:weather_app/model/weather_model.dart';
 import 'package:weather_app/service/api.dart';
+import 'package:weather_app/service/weather_tile_provider.dart';
+
 
 class WeatherController extends GetxController
     with GetTickerProviderStateMixin {
 
   final WeatherService weatherService = WeatherService();
+ 
 
   /// Forecast lists
   var hourlyForecast = <HourlyWeather>[].obs;
@@ -25,7 +29,9 @@ class WeatherController extends GetxController
   RxString condition = "".obs;
   RxInt humidity = 0.obs;
   RxDouble windSpeed = 0.0.obs;
-
+ 
+ RxSet<TileOverlay> overlays = <TileOverlay>{}.obs;
+ RxString mapTitle = "Weather Map".obs;
   /// Animations
   late AnimationController fadeController;
   late AnimationController floatController;
@@ -210,6 +216,56 @@ class WeatherController extends GetxController
       latitude.value, longitude.value);
 
   historyWeather.assignAll(history);
+}
+
+
+String getWeatherTileBaseUrl(String layer) {
+
+  final now = DateTime.now().toUtc();
+  print("print the time $now");
+
+  final dateStr =
+      "${now.year}${now.month.toString().padLeft(2,'0')}${now.day.toString().padLeft(2,'0')}";
+
+  // Always midnight
+  const hourStr = "00";
+
+  return "https://weathermaps.weatherapi.com/$layer/tiles/$dateStr$hourStr/{z}/{x}/{y}.png";
+}
+
+ void addTemperatureLayer() {
+  overlays.clear();
+  mapTitle.value = "Temperature Layer";
+  final url = getWeatherTileBaseUrl("tmp2m");
+
+  overlays.add(
+    TileOverlay(
+      tileOverlayId: const TileOverlayId("temperature"),
+      tileProvider: WeatherTileProvider(url),
+      transparency: 0.3
+    ),
+  );
+}
+
+ void addPrecipitationLayer() { 
+
+  overlays.clear();
+   mapTitle.value = "Precipitation Layer";
+  final url = getWeatherTileBaseUrl("precip");
+
+  overlays.add(
+    TileOverlay(
+      tileOverlayId: const TileOverlayId("precipitation"),
+      tileProvider: WeatherTileProvider(url),
+      transparency: 0.3
+    ),
+  );
+}
+ void clearLayers() {
+
+  mapTitle.value = "Weather Map";
+
+  overlays.value = {};
 }
 
   @override
