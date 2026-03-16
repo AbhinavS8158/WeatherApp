@@ -88,28 +88,21 @@ geolocator
 
 get
 
-📂 Project Structure
-lib
-│
-├── controller
-│   └── weather_controller.dart
-│
-├── service
-│   └── weather_service.dart
-│
-├── view
-│   ├── home_screen
-│   ├── history_screen
-│   └── map_screen
-│
-└── main.dart
+
 ▶️ How to Run the Project
+
 1️⃣ Clone the Repository
+
 git clone https://github.com/yourusername/weather_app.git
+
 2️⃣ Navigate to the Project Folder
+
 cd weather_app
+
 3️⃣ Install Dependencies
+
 flutter pub get
+
 4️⃣ Add API Keys
 
 Add your API keys inside the project.
@@ -121,7 +114,9 @@ OpenWeatherMap API Key
 WeatherAPI Key
 
 5️⃣ Run the Application
+
 flutter run
+
 📱 Screens in the Application
 
 Current Weather Screen
