@@ -81,9 +81,13 @@ GetX (State Management)
 Main packages used in the project:
 
 http
+
 google_maps_flutter
+
 geolocator
+
 get
+
 📂 Project Structure
 lib
 │
