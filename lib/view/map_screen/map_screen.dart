@@ -14,8 +14,6 @@ class WeatherMapScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Obx(() => Text(controller.mapTitle.value)),
-
-        // Make AppBar transparent so gradient shows
         backgroundColor: AppColor.backgroundStart,
       
       ),
