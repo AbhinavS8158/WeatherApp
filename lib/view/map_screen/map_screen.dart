@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:weather_app/controller/weather_controller.dart';
+import 'package:weather_app/utils/colors.dart';
 
 class WeatherMapScreen extends StatelessWidget {
   WeatherMapScreen({super.key});
@@ -15,7 +16,7 @@ class WeatherMapScreen extends StatelessWidget {
         title: Obx(() => Text(controller.mapTitle.value)),
 
         // Make AppBar transparent so gradient shows
-        backgroundColor: Colors.blueGrey,
+        backgroundColor: AppColor.backgroundStart,
       
       ),
 
@@ -38,6 +39,7 @@ class WeatherMapScreen extends StatelessWidget {
 
           /// TEMPERATURE BUTTON
           FloatingActionButton(
+            backgroundColor: AppColor.backgroundStart,
             heroTag: "temperature",
             child: const Icon(Icons.thermostat),
             onPressed: () {
@@ -56,6 +58,7 @@ class WeatherMapScreen extends StatelessWidget {
 
           /// PRECIPITATION BUTTON
           FloatingActionButton(
+            backgroundColor: AppColor.backgroundStart,
             heroTag: "precipitation",
             child: const Icon(Icons.water_drop),
             onPressed: () {
@@ -74,6 +77,7 @@ class WeatherMapScreen extends StatelessWidget {
 
           /// CLEAR BUTTON
           FloatingActionButton(
+            backgroundColor: AppColor.backgroundStart,
             heroTag: "clear",
             child: const Icon(Icons.clear),
             onPressed: () {

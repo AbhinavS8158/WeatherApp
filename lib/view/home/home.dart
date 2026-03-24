@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:weather_app/controller/weather_controller.dart';
+import 'package:weather_app/utils/colors.dart';
 import 'package:weather_app/view/home/widget/daily_forcast.dart';
 import 'package:weather_app/view/home/widget/details_weather.dart';
 import 'package:weather_app/view/home/widget/history_weather.dart';
@@ -14,51 +15,78 @@ class WeatherHomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    return LayoutBuilder(
+      builder: (context, constraints) {
 
-    return Scaffold(
-      body: AnimatedContainer(
-        duration: const Duration(milliseconds: 800),
-        decoration: const BoxDecoration(
-          gradient: LinearGradient(
-            begin: Alignment.topLeft,
-            end: Alignment.bottomRight,
-            colors: [
-              Colors.blueGrey,
-              Colors.black,
-            ],
-          ),
-        ),
+        double maxWidth = 600;
 
-        child: SafeArea(
-          child: FadeTransition(
-            opacity: controller.fadeAnimation,
-            child: Column(
-              children: [
+        if (constraints.maxWidth > 1100) {
+          maxWidth = 800; // desktop
+        } else if (constraints.maxWidth > 600) {
+          maxWidth = 700; // tablet
+        }
 
-                /// TOP BAR
-                buildTopBar(),
+        return Scaffold(
+          body: AnimatedContainer(
+            duration: const Duration(milliseconds: 800),
+            decoration: const BoxDecoration(
+              gradient: LinearGradient(
+                begin: Alignment.topLeft,
+                end: Alignment.bottomRight,
+                colors: [
+                  AppColor.backgroundStart,
+                  AppColor.backgroundEnd,
+                ],
+              ),
+            ),
 
-                Expanded(
-                  child: SingleChildScrollView(
-                    physics: const BouncingScrollPhysics(),
+            child: SafeArea(
+              child: Center(
+                child: ConstrainedBox(
+                  constraints: BoxConstraints(maxWidth: maxWidth),
+
+                  child: FadeTransition(
+                    opacity: controller.fadeAnimation,
+
                     child: Column(
                       children: [
 
-                        buildMainWeather(),
-                        buildWeatherDetails(),
-                        buildDailyForecast(),
-                        buildHistoryWeather(),
-                        
-                        const SizedBox(height: 20),
+                        buildTopBar(),
+
+                        Expanded(
+                          child: SingleChildScrollView(
+                            physics: const BouncingScrollPhysics(),
+                            child: Column(
+                              children: [
+
+                                buildMainWeather(),
+
+                                const SizedBox(height: 10),
+
+                                buildWeatherDetails(),
+
+                                const SizedBox(height: 10),
+
+                                buildDailyForecast(),
+
+                                const SizedBox(height: 10),
+
+                                buildHistoryWeather(),
+
+                                const SizedBox(height: 20),
+                              ],
+                            ),
+                          ),
+                        ),
                       ],
                     ),
                   ),
                 ),
-              ],
+              ),
             ),
           ),
-        ),
-      ),
+        );
+      },
     );
   }
 }

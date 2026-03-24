@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:weather_app/controller/weather_controller.dart';
+import 'package:weather_app/utils/colors.dart';
 import 'package:weather_app/view/map_screen/map_screen.dart';
 
 Widget buildTopBar() {
@@ -22,7 +23,7 @@ Widget buildTopBar() {
 
                 const Icon(
                   Icons.location_on,
-                  color: Colors.white70,
+                  color: AppColor.icon,
                   size: 14,
                 ),
 
@@ -32,7 +33,7 @@ Widget buildTopBar() {
                 Obx(() => Text(
                       controller.cityName.value,
                       style: const TextStyle(
-                        color: Colors.white70,
+                        color: AppColor.icon,
                         fontSize: 14,
                         letterSpacing: 0.5,
                       ),
@@ -45,7 +46,7 @@ Widget buildTopBar() {
             Text(
               getLocalTime(),
               style: const TextStyle(
-                color: Colors.white38,
+                color: AppColor.time,
                 fontSize: 12,
               ),
             ),
@@ -54,7 +55,7 @@ Widget buildTopBar() {
         Spacer(),
         IconButton(onPressed: (){
           Get.to(()=>WeatherMapScreen());
-        }, icon:Icon(Icons.map_rounded,color: Colors.white38,))
+        }, icon:Icon(Icons.map_rounded,color: AppColor.icon,))
       ],
     ),
   );

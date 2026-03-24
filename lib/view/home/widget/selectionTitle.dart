@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:weather_app/utils/colors.dart';
 
 Widget sectionTitle(String title) {
     return Row(
@@ -7,7 +8,7 @@ Widget sectionTitle(String title) {
         Text(
           title,
           style: const TextStyle(
-            color: Colors.white70,
+            color: AppColor.icon,
             fontSize: 13,
             fontWeight: FontWeight.w600,
             letterSpacing: 0.8,

@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:intl/intl.dart';
 import 'package:lottie/lottie.dart';
 import 'package:weather_app/controller/weather_controller.dart';
+import 'package:weather_app/utils/colors.dart';
 import 'package:weather_app/view/home/widget/selectionTitle.dart';
 
 Widget buildHistoryWeather() {
@@ -43,13 +45,15 @@ Widget buildHistoryWeather() {
 
             itemBuilder: (_, i) {
               final day = history[i];
+                String formattedDate = DateFormat('dd/MM/yyyy')
+                    .format(DateTime.parse(day.day));
 
               return Container(
                 width: 120,
                 margin: const EdgeInsets.only(left: 16),
 
                 decoration: BoxDecoration(
-                  color: Colors.white.withValues(alpha: 0.08),
+                  color: AppColor.white.withValues(alpha: 0.08),
                   borderRadius: BorderRadius.circular(16),
                 ),
 
@@ -57,13 +61,12 @@ Widget buildHistoryWeather() {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
-                      day.day,
+                      formattedDate,
                       style: const TextStyle(
-                        color: Colors.white70,
+                        color: AppColor.icon,
                         fontSize: 13,
                       ),
                     ),
-
                     const SizedBox(height: 6),
 
                     Image.network(day.icon, width: 32, height: 32),
@@ -72,7 +75,10 @@ Widget buildHistoryWeather() {
 
                     Text(
                       "${day.temp}°",
-                      style: const TextStyle(color: Colors.white, fontSize: 16),
+                      style: const TextStyle(
+                        color: AppColor.white,
+                        fontSize: 16,
+                      ),
                     ),
                   ],
                 ),

@@ -8,6 +8,7 @@ import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
 import 'package:weather_app/controller/weather_controller.dart';
 import 'package:weather_app/model/weather_model.dart';
+import 'package:weather_app/utils/colors.dart';
 import 'package:weather_app/view/home/widget/selectionTitle.dart';
 
 Widget buildDailyForecast() {
@@ -39,9 +40,9 @@ Widget buildDailyForecast() {
 
           Container(
             decoration: BoxDecoration(
-              color: Colors.white.withOpacity(0.08),
+              color: AppColor.white.withOpacity(0.08),
               borderRadius: BorderRadius.circular(24),
-              border: Border.all(color: Colors.white.withOpacity(0.1)),
+              border: Border.all(color: AppColor.white.withOpacity(0.1)),
             ),
 
             child: ListView.separated(
@@ -50,7 +51,7 @@ Widget buildDailyForecast() {
               itemCount: daily.length,
 
               separatorBuilder: (_, __) => Divider(
-                color: Colors.white.withOpacity(0.08),
+                color: AppColor.white.withOpacity(0.08),
                 height: 1,
                 indent: 16,
                 endIndent: 16,
@@ -72,7 +73,7 @@ Widget buildDailyForecast() {
                         child: Text(
                           d.day,
                           style: TextStyle(
-                            color: i == 0 ? Colors.white : Colors.white70,
+                            color: i == 0 ? AppColor.white : AppColor.icon,
                             fontSize: 14,
                             fontWeight:
                                 i == 0 ? FontWeight.w600 : FontWeight.w400,
@@ -101,7 +102,7 @@ Widget buildDailyForecast() {
                           '${d.high}°',
                           textAlign: TextAlign.right,
                           style: const TextStyle(
-                            color: Colors.white,
+                            color: AppColor.white,
                             fontSize: 14,
                             fontWeight: FontWeight.w500,
                           ),
@@ -117,7 +118,7 @@ Widget buildDailyForecast() {
                           '${d.low}°',
                           textAlign: TextAlign.right,
                           style: const TextStyle(
-                            color: Colors.white38,
+                            color: AppColor.time,
                             fontSize: 14,
                           ),
                         ),
@@ -160,7 +161,7 @@ Widget _tempBar(int low, int high, List<DailyWeather> daily) {
         /// background
         Container(
           decoration: BoxDecoration(
-            color: Colors.white.withOpacity(0.1),
+            color: AppColor.white.withOpacity(0.1),
             borderRadius: BorderRadius.circular(3),
           ),
         ),
@@ -176,8 +177,8 @@ Widget _tempBar(int low, int high, List<DailyWeather> daily) {
               decoration: BoxDecoration(
                 gradient: LinearGradient(
                   colors: [
-                    Colors.lightBlue.shade300,
-                    Colors.orange.shade300,
+                    AppColor.lightBlue,
+                    AppColor.orange,
                   ],
                 ),
                 borderRadius: BorderRadius.circular(3),
