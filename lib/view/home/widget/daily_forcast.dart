@@ -5,7 +5,7 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:lottie/lottie.dart';
+import 'package:shimmer/shimmer.dart';
 import 'package:weather_app/controller/weather_controller.dart';
 import 'package:weather_app/model/weather_model.dart';
 import 'package:weather_app/utils/colors.dart';
@@ -17,19 +17,55 @@ Widget buildDailyForecast() {
   return Obx(() {
     final List<DailyWeather> daily = controller.dailyForecast;
 
-    if (daily.isEmpty) {
-     return Padding(
-  padding: const EdgeInsets.all(20),
-  child: Center(
-    child: Lottie.asset(
-  'assets/animation/loading.json',
-  width: 120,
-  height: 120,
-  repeat: true,
-)
-  ),
-);
- }
+   if (daily.isEmpty) {
+  return Padding(
+    padding: const EdgeInsets.all(20),
+    child: Shimmer.fromColors(
+      baseColor: Colors.grey.shade800,
+      highlightColor: Colors.grey.shade600,
+      child: Column(
+        children: List.generate(5, (index) {
+          return Padding(
+            padding: const EdgeInsets.symmetric(vertical: 12),
+            child: Row(
+              children: [
+                Container(
+                  width: 40,
+                  height: 14,
+                  color: Colors.white,
+                ),
+                const SizedBox(width: 16),
+                Container(
+                  width: 24,
+                  height: 24,
+                  color: Colors.white,
+                ),
+                const Spacer(),
+                Container(
+                  width: 80,
+                  height: 6,
+                  color: Colors.white,
+                ),
+                const SizedBox(width: 12),
+                Container(
+                  width: 30,
+                  height: 14,
+                  color: Colors.white,
+                ),
+                const SizedBox(width: 4),
+                Container(
+                  width: 25,
+                  height: 14,
+                  color: Colors.white,
+                ),
+              ],
+            ),
+          );
+        }),
+      ),
+    ),
+  );
+}
     return Padding(
       padding: const EdgeInsets.fromLTRB(20, 20, 20, 0),
       child: Column(
